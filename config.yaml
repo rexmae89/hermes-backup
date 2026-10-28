@@ -1,0 +1,608 @@
+database:
+  journal_mode: wal
+runtime:
+  nofile_soft_limit: 4096
+model:
+  default: auto
+  provider: custom
+  base_url: https://token.lightvela.ai/v1
+  api_mode: chat_completions
+kanban:
+  review_dispatch: true
+cron:
+  catch_up_missed: true
+terminal:
+  backend: local
+  cwd: .
+  timeout: 180
+  home_mode: auto
+  docker_mount_cwd_to_workspace: false
+  lifetime_seconds: 300
+  container_cpu: 1
+  container_memory: 5120
+  container_disk: 51200
+  container_persistent: true
+browser:
+  inactivity_timeout: 120
+  extension_control:
+    enabled: false
+tool_loop_guardrails:
+  warnings_enabled: true
+  hard_stop_enabled: false
+  non_interactive_hard_stop_enabled: true
+  warn_after:
+    exact_failure: 2
+    same_tool_failure: 3
+    idempotent_no_progress: 2
+  hard_stop_after:
+    exact_failure: 5
+    same_tool_failure: 8
+    idempotent_no_progress: 5
+compression:
+  enabled: true
+  checkpoint_required: false
+  progress_notices: false
+  threshold: 0.5
+  threshold_tokens: 256000
+  codex_gpt55_autoraise: true
+  target_ratio: 0.2
+  protect_last_n: 20
+  min_tail_user_messages: 1
+  max_attempts: 3
+  codex_app_server_auto: native
+  codex_responses_native: false
+  protect_first_n: 3
+  idle_compact_after_seconds: 0
+  hygiene_max_turn_hold_seconds: 10
+  proactive_prune_tokens: 0
+  proactive_prune_min_result_chars: 8000
+  proactive_prune_min_reclaim_tokens: 4096
+prompt_caching:
+  cache_ttl: 5m
+memory:
+  memory_enabled: true
+  user_profile_enabled: true
+  memory_char_limit: 4000
+  user_char_limit: 1375
+  nudge_interval: 10
+group_sessions_per_user: true
+streaming:
+  enabled: false
+skills:
+  creation_nudge_interval: 15
+agent:
+  max_turns: 500
+  verbose: false
+  reasoning_effort: medium
+  service_tier: ''
+  fast_auto_seconds: 60
+  personalities: {}
+platform_toolsets:
+  cli:
+  - hermes-cli
+  telegram:
+  - hermes-telegram
+  discord:
+  - hermes-discord
+  whatsapp:
+  - hermes-whatsapp
+  slack:
+  - hermes-slack
+  signal:
+  - hermes-signal
+  homeassistant:
+  - hermes-homeassistant
+  qqbot:
+  - hermes-qqbot
+  yuanbao:
+  - hermes-yuanbao
+  teams:
+  - hermes-teams
+  google_chat:
+  - hermes-google_chat
+  vela_im:
+  - all
+stt:
+  enabled: true
+  local:
+    model: base
+  language: en
+  openai:
+    model: whisper-1
+    language: ''
+    timeout: 60
+    max_retries: 1
+code_execution:
+  timeout: 300
+  max_tool_calls: 50
+delegation:
+  max_iterations: 250
+display:
+  compact: false
+  tool_progress: all
+  cleanup_progress: false
+  interim_assistant_messages: true
+  suppress_warning_notifications: false
+  long_running_notifications: false
+  busy_ack_detail: true
+  busy_input_mode: interrupt
+  background_process_notifications: concise
+  bell_on_complete: false
+  bell_on_prompt: false
+  show_reasoning: true
+  streaming: true
+  skin: default
+  platforms:
+    lightclawbot:
+      streaming: true
+    vela_im:
+      show_reasoning: false
+      tool_progress: 'off'
+      interim_assistant_messages: false
+      long_running_notifications: false
+      busy_ack_detail: false
+      busy_steer_ack_enabled: false
+      live_status: 'off'
+      streaming: false
+telemetry:
+  shared_metrics:
+    enabled: false
+    send: false
+auth:
+  adopt_external_logins: true
+  codex_login_flow: device_code
+updates:
+  check: true
+  pre_update_backup: false
+  backup_keep: 5
+  non_interactive_local_changes: stash
+plugins:
+  enabled:
+  - lightclawbot
+  - weixinpay
+  - vela-im
+  disabled: []
+  entries:
+    weixinpay:
+      allow_gateway_injection: true
+      allow_tool_override: true
+platforms:
+  lightclawbot:
+    enabled: true
+    gateway_restart_notification: false
+  vela_im:
+    enabled: true
+    gateway_restart_notification: false
+  qqbot:
+    gateway_restart_notification: false
+  api_server:
+    gateway_restart_notification: false
+  telegram:
+    gateway_restart_notification: false
+  feishu:
+    gateway_restart_notification: false
+  wecom:
+    gateway_restart_notification: false
+  weixin:
+    gateway_restart_notification: false
+  dingtalk:
+    gateway_restart_notification: false
+  wecom_callback:
+    gateway_restart_notification: false
+approvals:
+  mode: 'off'
+  cron_mode: approve
+  destructive_slash_confirm: false
+  mcp_reload_confirm: false
+_config_version: 46
+providers:
+  custom:
+    base_url: https://token.lightvela.ai/v1
+    protocol: ''
+    key_env: CUSTOM_API_KEY
+    api_mode: chat_completions
+    model: auto
+    model_display_name: auto
+  9router:
+    name: 9router
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+  r9-test:
+    name: r9-test
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: Test
+    model_display_name: Test
+  r9-cloud:
+    name: r9-cloud
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: Cloud
+    model_display_name: Cloud
+  r9-free:
+    name: r9-free
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: Free
+    model_display_name: Free
+  r9-nvidia:
+    name: r9-nvidia
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: Nvidia
+    model_display_name: Nvidia
+  r9-gemini:
+    name: r9-gemini
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: Gemini
+    model_display_name: Gemini
+  r9-glm:
+    name: r9-glm
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: glm
+    model_display_name: glm
+  r9-claude:
+    name: r9-claude
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: Claude
+    model_display_name: Claude
+  r9-opus5:
+    name: r9-opus5
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: Opus5
+    model_display_name: Opus5
+  r9-opus4-8:
+    name: r9-opus4-8
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: Opus4.8
+    model_display_name: Opus4.8
+  r9-qw-ds4:
+    name: r9-qw-ds4
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: qw_ds4
+    model_display_name: qw_ds4
+  r9-claude-opus4-5:
+    name: r9-claude-opus4-5
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: Claude-Opus4.5
+    model_display_name: Claude-Opus4.5
+  r9-v4flash:
+    name: r9-v4flash
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: V4FLASH
+    model_display_name: V4FLASH
+  r9-claude-sonnet1:
+    name: r9-claude-sonnet1
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: claude-sonnet1
+    model_display_name: claude-sonnet1
+  r9-claude-sonnet2:
+    name: r9-claude-sonnet2
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: claude-sonnet2
+    model_display_name: claude-sonnet2
+  r9-claude-sonnet3:
+    name: r9-claude-sonnet3
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: claude-sonnet3
+    model_display_name: claude-sonnet3
+  r9-claude-sonnet4:
+    name: r9-claude-sonnet4
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: claude-sonnet4
+    model_display_name: claude-sonnet4
+  r9-orca:
+    name: r9-orca
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: orca
+    model_display_name: orca
+  r9-claude-sonnet5:
+    name: r9-claude-sonnet5
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: claude-sonnet5
+    model_display_name: claude-sonnet5
+  r9-claude-sonnet6:
+    name: r9-claude-sonnet6
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: claude-sonnet6
+    model_display_name: claude-sonnet6
+  r9-step:
+    name: r9-step
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: step
+    model_display_name: step
+  r9-image:
+    name: r9-image
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: image
+    model_display_name: image
+  r9-claude-sonnet7:
+    name: r9-claude-sonnet7
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: Claude-sonnet7
+    model_display_name: Claude-sonnet7
+  r9-fable:
+    name: r9-fable
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: fable
+    model_display_name: fable
+  r9-claude-sonnet8:
+    name: r9-claude-sonnet8
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: claude-sonnet8
+    model_display_name: claude-sonnet8
+  r9-claude-sonnet9:
+    name: r9-claude-sonnet9
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: claude-sonnet9
+    model_display_name: claude-sonnet9
+  r9-glm5-3flash:
+    name: r9-glm5-3flash
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: glm5.3flash
+    model_display_name: glm5.3flash
+  r9-kimik3:
+    name: r9-kimik3
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: kimik3
+    model_display_name: kimik3
+  r9-opus5-5:
+    name: r9-opus5-5
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: opus5.5
+    model_display_name: opus5.5
+  r9-dark:
+    name: r9-dark
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: dark
+    model_display_name: dark
+  r9-ag-gemini-3-8-flash-high:
+    name: r9-ag-gemini-3-8-flash-high
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: ag/gemini-3.8-flash-high
+    model_display_name: ag/gemini-3.8-flash-high
+  9gpt51:
+    name: 9gpt51
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: cl/openai/gpt-5.1
+    model_display_name: 9gpt51 (gpt-5.1)
+  9gpt52:
+    name: 9gpt52
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: cl/openai/gpt-5.2
+    model_display_name: 9gpt52 (gpt-5.2)
+  9gpt5pro:
+    name: 9gpt5pro
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: cl/openai/gpt-5-pro
+    model_display_name: 9gpt5pro (gpt-5-pro)
+  9o3:
+    name: 9o3
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: cl/openai/o3
+    model_display_name: 9o3 (o3)
+  9opus55:
+    name: 9opus55
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: cl/anthropic/claude-opus-5.5
+    model_display_name: 9opus55 (claude-opus-5.5)
+  9opus45:
+    name: 9opus45
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: cl/anthropic/claude-opus-4.5
+    model_display_name: 9opus45 (claude-opus-4.5)
+  9sonnet45:
+    name: 9sonnet45
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: cl/anthropic/claude-sonnet-4.5
+    model_display_name: 9sonnet45 (claude-sonnet-4.5)
+  9haiku45:
+    name: 9haiku45
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: cl/anthropic/claude-haiku-4.5
+    model_display_name: 9haiku45 (claude-haiku-4.5)
+  9geminipro:
+    name: 9geminipro
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: cl/google/gemini-3.1-pro-preview
+    model_display_name: 9geminipro (gemini-3.1-pro-preview)
+  9geminiflash:
+    name: 9geminiflash
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: cl/google/gemini-3.5-flash
+    model_display_name: 9geminiflash (gemini-3.5-flash)
+  9grok:
+    name: 9grok
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: cl/x-ai/grok-4.7
+    model_display_name: 9grok (grok-4.7)
+  9deepseek:
+    name: 9deepseek
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: cl/deepseek/deepseek-v4-pro
+    model_display_name: 9deepseek (deepseek-v4-pro)
+  9dsr1:
+    name: 9dsr1
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: cl/deepseek/deepseek-r1
+    model_display_name: 9dsr1 (deepseek-r1)
+  9glm:
+    name: 9glm
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: seek/glm-5.3
+    model_display_name: 9glm (glm-5.3)
+  9minimax:
+    name: 9minimax
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: seek/minimax-m2.7
+    model_display_name: 9minimax (minimax-m2.7)
+  9free:
+    name: 9free
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: Free
+    model_display_name: 9free (Free)
+  9gpt:
+    name: 9gpt
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: cl/openai/gpt-5.1
+    model_display_name: 9gpt (GPT-5.1)
+  9claude:
+    name: 9claude
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: cl/anthropic/claude-sonnet-4.5
+    model_display_name: 9claude (Sonnet 4.5)
+  9gemini:
+    name: 9gemini
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+    api_mode: chat_completions
+    model: Gemini
+    model_display_name: 9gemini (Gemini)
+  fnafdarkzone:
+    name: fnafdarkzone
+    base_url: https://api.fnafdarkzone.serv00.net/v1
+    key_env: FNAFDARKZONE_API_KEY
+    api_mode: chat_completions
+  fnaf-darklo:
+    name: fnaf-darklo
+    base_url: https://api.fnafdarkzone.serv00.net/v1
+    key_env: FNAFDARKZONE_API_KEY
+    api_mode: chat_completions
+    model: DARKlo
+    model_display_name: DARKlo (FnafDarkZone)
+  fnaf:
+    base_url: https://api.fnafdarkzone.serv00.net/v1
+    key_env: FNAF_API_KEY
+    api_mode: chat_completions
+onboarding:
+  seen:
+    profile_build_offered: true
+    busy_input_prompt: true
+model_aliases:
+  darklo:
+    model: DARKlo
+    provider: custom
+    base_url: https://api.fnafdarkzone.serv00.net/v1
+    key_env: FNAFDARKZONE_API_KEY
+  fnaf:
+    model: DARKlo
+    provider: custom
+    base_url: https://api.fnafdarkzone.serv00.net/v1
+    key_env: FNAFDARKZONE_API_KEY
+  9gpt:
+    model: cl/openai/gpt-5.1
+    provider: custom
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+  9claude:
+    model: cl/anthropic/claude-sonnet-4.5
+    provider: custom
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+  9free:
+    model: Free
+    provider: custom
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+  9gemini:
+    model: Gemini
+    provider: custom
+    base_url: https://9router-production-7a08.up.railway.app/v1
+    key_env: NINE_ROUTER_API_KEY
+  fnafdark:
+    provider: fnaf
+    model: DARKlo
+    key_env: FNAF_API_KEY

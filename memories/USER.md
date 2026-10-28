@@ -1,0 +1,1 @@
+User (Noyan) communicates in Persian (Farsi) via Telegram DM — reply in Persian, concise and direct. Comfortable with server/admin content (RDP configs, API routers).
